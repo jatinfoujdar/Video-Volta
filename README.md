@@ -8,6 +8,7 @@ VIDEO VOLTA is your personal movie curator, designed to make your movie-watching
       - Sign In /Sign up Form
       - redirect to Browse Page
 
+
 - Browse (after authentication)
 
       - Header
