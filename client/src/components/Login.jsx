@@ -3,6 +3,11 @@ import Header from './Header'
 
 const Login = () => {
   const [isSignForm,setIsSignForm] = useState(true);
+  
+
+  const handleButtonClick = ()=>{
+
+  }
 
   const toggleSignInForm =()=>{
     setIsSignForm(!isSignForm)
@@ -15,7 +20,8 @@ const Login = () => {
 
         </div>
         <form className='absolute p-12 w-3/12 bg-black bg-opacity-60 rounded my-36 mx-auto right-0 left-0 '>
-          <h1 className='font-bold text-3xl py-4 text-white'>{isSignForm ? "Sign In" : "Sign Up"} </h1>
+          <h1 className='font-bold text-3xl py-4 text-white' onClick={handleButtonClick} >
+            {isSignForm ? "Sign In" : "Sign Up"} </h1>
           {!isSignForm && <input type='text' placeholder='Name' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>}
           <input type='text' placeholder='Email Address' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>
           <input type='password' placeholder='Password' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>
