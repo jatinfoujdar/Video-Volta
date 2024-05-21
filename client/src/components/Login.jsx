@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../util/validate';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../util/firebase';
 
 const Login = () => {
   const [isSignForm,setIsSignForm] = useState(true);
@@ -14,6 +16,25 @@ const Login = () => {
     //  console.log(password.current.value);
     const message = checkValidData(email.current.value,password.current.value);
      setErrorVar(message);
+     if(message) return;
+    
+     if(!isSignForm){
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+     }else{
+
+     }
+     
+     
   }
 
   const toggleSignInForm =()=>{
@@ -35,7 +56,7 @@ const Login = () => {
           <p className='text-red-500'>{errorVar}</p>
           <button className='p-4 m-4 bg-red-700 w-full text-white rounded-lg' onClick={handleButtonClick}>{isSignForm ? "Sign In" : "Sign Up"}</button>
           <p className='text-white py-4 cursor-pointer' onClick={toggleSignInForm} >
-          {isSignForm ? "New to Netflix? Sign Up Now" : "Already Registred? SignIn Now"} </p>
+          {isSignForm ? "New to Netflix? Sign Up Now" : "Already Registred? Sign In Now"} </p>
         </form>
     </div>
   )
