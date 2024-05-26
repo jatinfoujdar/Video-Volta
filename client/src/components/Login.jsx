@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header';
 import { checkValidData } from '../util/validate';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../util/firebase';
 
 const Login = () => {
@@ -19,19 +19,34 @@ const Login = () => {
      if(message) return;
     
      if(!isSignForm){
-      createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
       .then((userCredential) => {
         // Signed up 
+        
         const user = userCredential.user;
+        // console.log(user);
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
+        setErrorVar(errorCode +" " + errorMessage);
       });
-     }else{
-
+     }
+     else
+     {
+      signInWithEmailAndPassword(auth,email.current.value,password.current.value)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorVar(errorCode +" " + errorMessage);
+      });
      }
      
      
