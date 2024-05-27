@@ -10,18 +10,18 @@ const Login = () => {
   
   const email = useRef(null);
   const password = useRef(null);
-  // const name = useRef(null);
+  const name = useRef(null);
 
   const handleButtonClick = ()=>{
      console.log(email.current.value);
      console.log(password.current.value);
-    //  console.log(name.current.value);
+     console.log(name.current.value);
     const message = checkValidData(email.current.value,password.current.value);
      setErrorVar(message);
      if(message) return;
     
      if(!isSignForm){
-      createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
+      createUserWithEmailAndPassword(auth, email.current.value,password.current.value,name.current.value)
       .then((userCredential) => {
         // Signed up 
         
@@ -67,7 +67,7 @@ const Login = () => {
         <form onSubmit={(e) => e.preventDefault()} className='absolute p-12 w-3/12 bg-black bg-opacity-60 rounded my-36 mx-auto right-0 left-0 '>
           <h1 className='font-bold text-3xl py-4 text-white'  >
             {isSignForm ? "Sign In" : "Sign Up"} </h1>
-          {!isSignForm && <input  type='text' placeholder='Name' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>}
+          {!isSignForm && <input ref={name}  type='text' placeholder='Name' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>}
           <input ref={email} type='text' placeholder='Email Address' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>
           <input ref={password} type='password' placeholder='Password' className='p-3 m-4 w-full font-bold bg-slate-700 rounded-lg'/>
           <p className='text-red-500'>{errorVar}</p>
