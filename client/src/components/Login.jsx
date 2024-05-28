@@ -27,6 +27,7 @@ const Login = () => {
         
         const user = userCredential.user;
         console.log(user);
+        
         // ...
       })
       .catch((error) => {
