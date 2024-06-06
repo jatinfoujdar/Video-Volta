@@ -3,7 +3,6 @@ import Header from './Header';
 import { checkValidData } from '../util/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../util/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../util/userSlice';
 import { USER_AVATAR } from '../util/constant';
@@ -11,7 +10,7 @@ import { USER_AVATAR } from '../util/constant';
 const Login = () => {
   const [isSignForm, setIsSignForm] = useState(true);
   const [errorVar, setErrorVar] = useState(null);
-  const navigate = useNavigate();
+  
   const dispatch = useDispatch()
 
   const email = useRef(null);
