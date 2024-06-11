@@ -39,7 +39,7 @@ const Login = () => {
           if (name.current) { // Check if name field exists
             updateProfile(user, {
               displayName: name.current.value,
-              photoURL: {USER_AVATAR},
+              photoURL: {USER_AVATAR}
             })
               .then(() => {
                 const {uid,email,displayName , photoURL} = auth.currentUser;
