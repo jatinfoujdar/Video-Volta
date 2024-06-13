@@ -1,0 +1,6 @@
+MainContainer
+      - VideoBackground
+      - VideoTitle
+SecondaryContainer
+      - MovieList * N
+         - Card * N
