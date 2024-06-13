@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../util/movieSlice";
+import { API_OPTION } from '../util/constant'
 
 
-const nowPlayingMovies = () => {
+const useNowPlayingMovies = () => {
 
     const dispatch = useDispatch(); 
 
@@ -19,3 +20,5 @@ const nowPlayingMovies = () => {
         getNowPlayingMoviews();
     },[]);
 }
+
+export default useNowPlayingMovies;
